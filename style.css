@@ -1,0 +1,55 @@
+body{
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    font-family: 'Poppins', sans-serif;
+    text-align:center;
+    color:white;
+}
+
+h1{
+    margin-top:40px;
+}
+
+.green{
+    color:#7CFC00;
+}
+
+.card{
+    background:white;
+    color:black;
+    width:350px;
+    margin:40px auto;
+    padding:30px;
+    border-radius:15px;
+    position:relative;
+}
+
+.gif{
+    width:150px;
+}
+
+.buttons{
+    margin-top:20px;
+    position:relative;
+    height:80px;
+}
+
+button{
+    padding:10px 20px;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    font-size:16px;
+    position:absolute;
+}
+
+.yes{
+    background:#ff4d6d;
+    color:white;
+    left:30%;
+}
+
+.no{
+    background:#999;
+    color:white;
+    left:55%;
+}
