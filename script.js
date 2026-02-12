@@ -1,105 +1,49 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+const noButton = document.querySelector(".no-button");
+const yesButton = document.querySelector(".yes-button");
 
-body{
-    font-family:'Poppins', sans-serif;
-    min-height:100vh;
-    text-align:center;
-    overflow:hidden;
+const messages = [
+    "Are you sure?",
+    "Really sure? 😢",
+    "Think again 💔",
+    "Please? 🥺",
+    "Don’t break my heart 💖",
+    "Last chance 😭"
+];
 
-    background: linear-gradient(-45deg,#ff4d6d,#ff8fab,#cdb4db,#a2d2ff);
-    background-size:400% 400%;
-    animation:gradientMove 12s ease infinite;
-}
+let messageIndex = 0;
+let size = 18;
 
-@keyframes gradientMove{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
-}
+// No button effect
+noButton.addEventListener("mouseover", () => {
 
-h1{
-    margin-top:40px;
-    font-size:2.8rem;
-    color:white;
-}
+    noButton.textContent = messages[messageIndex];
+    messageIndex = (messageIndex + 1) % messages.length;
 
-h1 span{
-    color:#fff;
-    text-shadow:0 0 15px rgba(255,255,255,0.8);
-}
+    const x = Math.random() * 250;
+    const y = Math.random() * 120;
 
-.card{
-    width:380px;
-    margin:60px auto;
-    padding:40px;
-    border-radius:30px;
-    backdrop-filter:blur(20px);
-    background:rgba(255,255,255,0.2);
-    box-shadow:0 8px 40px rgba(0,0,0,0.3);
-    color:white;
-}
+    noButton.style.left = x + "px";
+    noButton.style.top = y + "px";
 
-.gif{
-    width:160px;
-    margin-bottom:20px;
-}
+    size += 6;
+    yesButton.style.fontSize = size + "px";
+});
 
-.buttons{
-    margin-top:25px;
-    position:relative;
-    height:120px;
-}
+// Yes click effect
+yesButton.addEventListener("click", () => {
 
-button{
-    padding:14px 28px;
-    border:none;
-    border-radius:50px;
-    cursor:pointer;
-    font-size:18px;
-    position:absolute;
-    transition:0.3s ease;
-}
+    confetti({
+        particleCount: 250,
+        spread: 120,
+        origin:{y:0.6}
+    });
 
-.yes-button{
-    background:#ff2e63;
-    color:white;
-    left:20%;
-    box-shadow:0 6px 25px rgba(255,46,99,0.6);
-}
-
-.no-button{
-    background:#555;
-    color:white;
-    left:55%;
-}
-
-button:hover{
-    transform:scale(1.1);
-}
-
-/* Floating hearts */
-.floating-hearts::before{
-    content:"💖 💗 💘 💕 💓 💞";
-    position:absolute;
-    width:100%;
-    font-size:2rem;
-    opacity:0.3;
-    animation:float 20s linear infinite;
-}
-
-@keyframes float{
-    0%{transform:translateY(100vh);}
-    100%{transform:translateY(-10vh);}
-}
-
-/* Mobile */
-@media(max-width:480px){
-    .card{
-        width:90%;
-        padding:30px;
-    }
-}
+    setTimeout(() => {
+        document.body.innerHTML = `
+        <div style="margin-top:200px;color:white;">
+            <h1 style="font-size:3rem;">YAYYYY 💖</h1>
+            <h2>I Knew It 😍</h2>
+        </div>
+        `;
+    }, 1000);
+});
